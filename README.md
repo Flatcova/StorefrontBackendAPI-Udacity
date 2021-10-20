@@ -196,6 +196,7 @@ before starting the test due to a problem with the ENV variable ``set ENV=test``
 npm run test
 ```
 once you check all the test don't forget to revert the value to ``dev``
+
 3. For running the TypeScript version on src folder, I use ```Nodemon``` to be able to see changes on the server while develop.
 ```
 npm run dev
