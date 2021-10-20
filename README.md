@@ -87,17 +87,96 @@ If you like to see the compiled version the command to initialize the project al
 npm run start
 ```
 
-5. Open your browser on ``localhost:3000`` to see if your project it's running correctly also you can see the console response when the project it's up and running.
+Open your browser on ``localhost:3000`` to see if your project it's running correctly also you can see the console response when the project it's up and running.
 
 ## HURRAYYY!!
 
 Well, that was much work for just initiating the project, but now it's time to see how it works. for this following steps we are going to use Postman for testing all our endpoints.
 
-To try all the endpoints it's recomended to use POSTMAN if you don't have postman visit the postman site ``https://www.postman.com/`` and download the Desktop App so you can test all the enpoints on the localhost:3000
+To try all the endpoints it's recomended to use POSTMAN if you don't have postman visit the postman site https://www.postman.com/ and download the Desktop App so you can test all the enpoints on the localhost:3000
 
-### USER CRUD endpoints
+## API Endpoints
 
-7. When trying to resize the same image with the same parameters the image will be cache from the previous created.
+### Authorization endpoints
+
+As a requirement from the stakeholders, to be able to create a User, you must have a token that authorize for this process, for the first ever user, you can remove the middleware from the route insise ``\src\handlers\users_handler.ts`` at the bottom of the file on the ``users_routes`` function. and put it back once the unitial user is created and you saved the Token displayed, for future calls to routes with Authorization needed.
+
+#### Products
+`products` [GET] - Index 
+`products/:id` [GET] - Show
+`products` [POST] - Create [token required]
+`top-products` [GET] - [OPTIONAL] Top 5 most popular products 
+`products/:category` [GET] - [OPTIONAL] Products by category (args: product category)
+
+#### Users
+`users` [GET] - Index [token required]
+`users/:id` [GET] - Show [token required]
+`users` [POST] - Create N[token required]
+
+#### Orders
+`order/:user_id` [GET] - Current Order by user (args: user id)[token required]
+`orders/:user_id` [GET] - [OPTIONAL] Completed Orders by user (args: user id)[token required]
+
+Additional
+`orders` [GET] - All Orders
+`orders` [POST] - Create a new Order by user (args: user id)[token required]
+`order/:id/products` [POST] - Crate a Order Product (args: order id)[token required]
+`order/:id` [PUT] - Update Order to complete (args: order id)[token required]
+`order/:id` [DELETE] - Delete a Order with it's Order Products (args: order id)[token required]
+
+## Data Shapes
+#### Product
+-  id
+- name
+- price
+- [OPTIONAL] category
+
+```
+TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    price money NOT NULL,
+    category VARCHAR(150),
+    selled integer DEFAULT 0
+);
+```
+
+#### User
+- id
+- firstName
+- lastName
+- password
+
+```
+TABLE users (
+    id SERIAL PRIMARY KEY,
+    firstName VARCHAR(150),
+    lastName VARCHAR(150),
+    password VARCHAR(150)
+);
+```
+
+#### Orders
+- id
+- id of each product in the order
+- quantity of each product in the order
+- user_id
+- status of order (active or complete)
+
+```
+TABLE orders (
+    id SERIAL PRIMARY KEY, 
+    user_id bigint REFERENCES users(id),
+    order_status VARCHAR(100) DEFAULT 'active'
+);
+
+TABLE order_product (
+    id SERIAL PRIMARY KEY,
+    order_id bigint REFERENCES orders(id),
+    product_id bigint REFERENCES products(id),
+    quantity integer
+);
+```
 
 ## Aditional Scripts
 
@@ -127,40 +206,3 @@ npm run dev
 The company stakeholders want to create an online storefront to showcase their great product ideas. Users need to be able to browse an index of all products, see the specifics of a single product, and add products to an order that they can view in a cart page. You have been tasked with building the API that will support this application, and your coworker is building the frontend.
 
 These are the notes from a meeting with the frontend developer that describe what endpoints the API needs to supply, as well as data shapes the frontend and backend have agreed meet the requirements of the application. 
-
-## API Endpoints
-#### Products
-- Index 
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products 
-- [OPTIONAL] Products by category (args: product category)
-
-#### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
-
-#### Orders
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
-
-## Data Shapes
-#### Product
--  id
-- name
-- price
-- [OPTIONAL] category
-
-#### User
-- id
-- firstName
-- lastName
-- password
-
-#### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
