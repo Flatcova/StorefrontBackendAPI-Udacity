@@ -2,12 +2,14 @@
     "driver": "pg",
     "host": "127.0.0.1",
     "database": "storefront-backend",
+    "port": "5432",
     "user": "postgres",
     "password": "postgres"
   }, 
   "test": {
     "driver": "pg",
     "host": "127.0.0.1",
+    "port": "5433",
     "database": "storefront-backend-test",
     "user": "postgres",
     "password": "postgres"
