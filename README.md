@@ -9,23 +9,6 @@ Welcome to my Storefront Backend API project. In this project it's all the backe
 
 The purpose of this project it's to create a the endpoints needed from a storefront project, which will give access to create delete and show products, as well creating orders from users. While everything it's connected to a PostgresSQL Database on Docker.
 
-![Sample Input Image][image1]
-
-This is an image example that processed trough the endpoint, the result was the next image, saved in the new-image folder and now every time the user wants the same image, it will be cache from there.
-
-![Output Image resized to 100x100][image2]
-
-The project has a logger that show all the process being made on the API, it will create a ``image-api.log`` where you can find the process that when throw as well in the terminal.
-
-```
-2021-09-21 14:34:26:3426 info: Successfull finding existing file in cache - undefined
-2021-09-21 14:34:26:3426 info: File was found in cache - undefined
-2021-09-21 14:34:38:3438 error: File not found in cache - Error: ENOENT: no such file or directory, access 'C:\Users\m_cov\Desktop\Udemy-Course\Image-Processing-Project\new-images\undefined-NaNxNaN.jpg'
-2021-09-21 14:34:38:3438 warn: File not found, continue with creation - undefined
-2021-09-21 14:34:38:3438 info: imageCreation starting - undefined
-2021-09-21 14:34:38:3438 error: Error while creating new image - Error: Expected positive integer for width but received NaN of type number
-```
-
 ## Project Instructions
 
 ### Instructions
