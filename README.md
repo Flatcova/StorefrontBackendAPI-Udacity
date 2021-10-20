@@ -190,10 +190,12 @@ npm run prettier
 ```
 
 2. Testing script will run the ``build`` script first and once created the ``/dist`` folder it would run jasmine for all the Unit test and the Supertest for the endpoint on the Test-DB.
+
+before starting the test due to a problem with the ENV variable ``set ENV=test`` works fine with the Windows System, if your using linux (MacOs) I suggest of changing manually the value on the ``.env`` file to ``test`` then you can run the command:
 ```
 npm run test
 ```
-
+once you check all the test don't forget to revert the value to ``dev``
 3. For running the TypeScript version on src folder, I use ```Nodemon``` to be able to see changes on the server while develop.
 ```
 npm run dev
