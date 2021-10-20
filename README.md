@@ -102,27 +102,27 @@ To try all the endpoints it's recomended to use POSTMAN if you don't have postma
 As a requirement from the stakeholders, to be able to create a User, you must have a token that authorize for this process, for the first ever user, you can remove the middleware from the route insise ``\src\handlers\users_handler.ts`` at the bottom of the file on the ``users_routes`` function. and put it back once the unitial user is created and you saved the Token displayed, for future calls to routes with Authorization needed.
 
 #### Products
-`products` [GET] - Index 
-`products/:id` [GET] - Show
-`products` [POST] - Create [token required]
-`top-products` [GET] - [OPTIONAL] Top 5 most popular products 
-`products/:category` [GET] - [OPTIONAL] Products by category (args: product category)
+- `products` [GET] - Index 
+- `products/:id` [GET] - Show
+- `products` [POST] - Create [token required]
+- `top-products` [GET] - [OPTIONAL] Top 5 most popular products 
+- `products/:category` [GET] - [OPTIONAL] Products by category (args: product category)
 
 #### Users
-`users` [GET] - Index [token required]
-`users/:id` [GET] - Show [token required]
-`users` [POST] - Create N[token required]
+- `users` [GET] - Index [token required]
+- `users/:id` [GET] - Show [token required]
+- `users` [POST] - Create N[token required]
 
 #### Orders
-`order/:user_id` [GET] - Current Order by user (args: user id)[token required]
-`orders/:user_id` [GET] - [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- `order/:user_id` [GET] - Current Order by user (args: user id)[token required]
+- `orders/:user_id` [GET] - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 Additional
-`orders` [GET] - All Orders
-`orders` [POST] - Create a new Order by user (args: user id)[token required]
-`order/:id/products` [POST] - Crate a Order Product (args: order id)[token required]
-`order/:id` [PUT] - Update Order to complete (args: order id)[token required]
-`order/:id` [DELETE] - Delete a Order with it's Order Products (args: order id)[token required]
+- `orders` [GET] - All Orders
+- `orders` [POST] - Create a new Order by user (args: user id)[token required]
+- `order/:id/products` [POST] - Crate a Order Product (args: order id)[token required]
+- `order/:id` [PUT] - Update Order to complete (args: order id)[token required]
+- `order/:id` [DELETE] - Delete a Order with it's Order Products (args: order id)[token required]
 
 ## Data Shapes
 #### Product
