@@ -8,9 +8,15 @@ var express_1 = __importDefault(require("express"));
 var orders_handler_1 = __importDefault(require("./handlers/orders_handler"));
 var products_handler_1 = __importDefault(require("./handlers/products_handler"));
 var users_handler_1 = __importDefault(require("./handlers/users_handler"));
+var cors_1 = __importDefault(require("cors"));
 var app = (0, express_1["default"])();
 var PORT = 3000;
 app.use(body_parser_1["default"].json());
+var corsOptions = {
+    origin: 'http://localhost:4200',
+    optionsSuccessStatus: 200
+};
+app.use((0, cors_1["default"])(corsOptions));
 app.get('/', function (_req, res) {
     res.send('Welcome Screen');
 });
